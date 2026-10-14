@@ -93,3 +93,4 @@ uvicorn main:app --reload --port 8000
 
 ## 5. 정민
 머지, CI, 배포, 제출 때 확인할 것은 `docs/MERGER_CHECKLIST.md` 를 따릅니다.
+PR 리뷰는 Claude Code 에서 `/review-pr <번호>` (영진 백업은 Codex 에서 `$review-pr <번호>`).

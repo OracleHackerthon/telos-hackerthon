@@ -17,7 +17,7 @@
 | `web/app/api/`, `web/lib/db.ts` | 영진 |
 | `ai/`, `research/` | 승연 |
 | `web/lib/api.ts`, `web/lib/ai-client.ts`, `web/components/ui/`, `web/package.json`, `ai/requirements.txt`, `docs/`, `AGENTS.md` | 정민 |
-| `deploy/`, `Dockerfile`, `.github/`, `.codex/`, `.agents/` | 정민 |
+| `deploy/`, `Dockerfile`, `.github/`, `.codex/`, `.agents/`, `.claude/` | 정민 |
 
 남의 경로를 바꿔야 하면 작업을 멈추고, 무엇이 필요한지 사용자에게 알린다.
 

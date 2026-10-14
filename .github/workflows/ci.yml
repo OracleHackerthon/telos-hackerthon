@@ -24,6 +24,13 @@ jobs:
             exit 1
           fi
 
+  repo-check:
+    # 두 곳에 있는 review-pr 스킬이 같은지 확인 (Claude Code 용, Codex 용)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmp .claude/skills/review-pr/SKILL.md .agents/skills/review-pr/SKILL.md
+
   web:
     runs-on: ubuntu-latest
     defaults:
