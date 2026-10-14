@@ -9,8 +9,9 @@ description: 화면(web/app 의 page.tsx, web/components)을 만들거나 고칠
 
 ## 우리 프로젝트 기준 (먼저 읽는다)
 - **Base UI 버전이다** (`web/components.json` 의 `"style": "base-nova"`, 부품은 `@base-ui/react` 사용). Radix 방식(`asChild`, `@radix-ui/*`)을 쓰지 않는다. 커스텀 트리거는 `render` prop 을 쓴다 → `rules/base-vs-radix.md`
-- **`web/components/ui/` 에 있는 부품만 쓴다.** 지금 있는 것: button, card, input, label, sonner, textarea (폴더를 열어 최신 목록을 확인한다).
-- 규칙 문서가 가리키는 부품(Dialog, Field, InputGroup, Alert, Empty, Skeleton, Badge, Spinner 등)이 폴더에 없으면 **직접 설치하지 않는다.** `npx shadcn` 명령을 실행하지 않는다 (공통 파일이 바뀌고 폰트 설정이 되돌아갈 수 있다, DECISIONS D2). 사용자에게 "<부품> 이 필요합니다. 정민에게 추가를 요청해 주세요" 라고 알리고, 그동안은 있는 부품과 Tailwind 로 단순하게 만든다.
+- **`web/components/ui/` 에 있는 부품만 쓴다.** 지금 있는 것: alert, badge, button, card, chart(recharts), dialog, empty, field, input, label, select, separator, skeleton, sonner, spinner, table, tabs, textarea (폴더를 열어 최신 목록을 확인한다).
+- 로딩은 `Skeleton`·`Spinner`, 빈 화면은 `Empty`, 안내 문구는 `Alert`, 폼은 `Field`, 차트는 `chart`(recharts 기반)를 쓴다.
+- 규칙 문서가 가리키는 부품(InputGroup, ToggleGroup, Sheet 등)이 폴더에 없으면 **직접 설치하지 않는다.** `npx shadcn` 명령을 실행하지 않는다 (공통 파일이 바뀌고 폰트 설정이 되돌아갈 수 있다, DECISIONS D2). 사용자에게 "<부품> 이 필요합니다. 정민에게 추가를 요청해 주세요" 라고 알리고, 그동안은 있는 부품과 Tailwind 로 단순하게 만든다.
 - 토스트 알림은 이미 있는 `sonner` 를 쓴다 (`toast()` from `sonner`, `<Toaster />` 는 `components/ui/sonner.tsx`).
 - 아이콘은 `lucide-react` 를 쓴다.
 - 클래스 합치기는 `@/lib/utils` 의 `cn()` 을 쓴다.

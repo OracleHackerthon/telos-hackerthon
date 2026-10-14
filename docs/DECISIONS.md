@@ -20,6 +20,7 @@
 - `cn` 패키지는 쓰인다. `web/lib/utils.ts` 가 `export { cn } from "cn"` 으로 다시 내보내고, `web/components/ui/*` 가 `from "cn"` 으로 직접 가져온다. 지우면 빌드가 실패한다.
 - `shadcn` 패키지는 쓰인다. `web/app/globals.css` 가 `@import "shadcn/tailwind.css"` 를 한다.
 - `web/Dockerfile` 은 `npm ci` 로 devDependencies 까지 모두 설치하고, 실행 이미지에는 Next.js standalone 결과만 담는다. 그래서 dependencies ↔ devDependencies 이동은 이미지 크기와 빌드 시간에 거의 영향이 없다.
+- `recharts` 는 `web/components/ui/chart.tsx` 가 쓴다 (데이터 시각화용, 10/14 추가).
 - 패키지를 지우거나 옮기자고 하기 전에 `git grep -n "<패키지명>" -- web ai` 로 TS·CSS·설정 파일까지 사용처를 확인한다.
 
 ## D4. MOCK 은 화면이 아니라 API 쪽에 둔다
