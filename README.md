@@ -31,7 +31,7 @@ python --version
 GitHub와 저장소:
 ```powershell
 gh auth login                                   # 브라우저 인증
-git config --global user.name "이름"
+git config --global user.name "예원"          # 본인 이름을 한글로: 예원 / 영진 / 승연 (Codex가 이걸로 누구인지 안다)
 git config --global user.email "깃허브 이메일"
 gh repo clone OracleHackerthon/<저장소>
 ```
@@ -53,7 +53,7 @@ Copy-Item ..\.env.example .env.local    # AI_SERVICE_URL=http://localhost:8000
 npm run dev                             # http://localhost:3000
 ```
 
-**ai (승연, web 작업자도 연결 확인 시 실행)**
+**ai (승연만. 개인 API 키 사용. 예원·영진은 MOCK 으로 개발하므로 띄우지 않아도 됩니다)**
 ```powershell
 cd ai
 python -m venv .venv
@@ -69,6 +69,9 @@ uvicorn main:app --reload --port 8000
 ## 3. 작업 흐름 (Codex에게 말로 시킵니다)
 
 저장소 폴더에서 `codex` 를 실행합니다. 처음에 이 폴더를 신뢰(trust)할지 물으면 **예**를 고릅니다. 그래야 팀 규칙(`.codex/rules`)이 적용됩니다.
+
+첫 마디는 **"나 예원이야"** 처럼 이름만 말하면 됩니다. Codex가 `docs/TEAM.md` 를 읽고 지금 할 일을 알려 줍니다.
+개발 서버(`npm run dev`, `uvicorn`)는 Codex 안이 아니라 **별도 PowerShell 창**에서 직접 실행하세요.
 
 | 할 일 | Codex에게 |
 |---|---|

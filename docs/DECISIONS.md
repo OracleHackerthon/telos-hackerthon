@@ -8,6 +8,9 @@
 - 이유: Oracle 주최 대회, Always Free 등급, 10/14 리허설에서 이 방식으로 접속 확인.
 - 지킬 것: Oracle SQL 문법. 드라이버는 `oracledb`(Thin). 접속은 `web/lib/db.ts` 하나뿐.
 - 되돌리면: PostgreSQL·MySQL 이나 지갑(mTLS) 방식으로 바꾸면 검증된 경로가 사라진다.
+- 앱(VM)과 영진 노트북은 **APP 사용자**로 접속한다. ADMIN 비밀번호는 정민만 갖는다 (RUNBOOK 5-1).
+- 로컬에서 DB 에 접속하는 사람은 영진뿐이다. 대회 당일 대회장 공인 IP 를 ACL 에 추가한다. 다른 팀원은 MOCK 으로 개발한다.
+- 테이블 정의는 `web/db/schema.sql` (영진). 실행은 정민이 Database Actions 에서 한다. 마이그레이션 도구는 쓰지 않는다 (28시간 대회에 비해 준비 비용이 크다).
 
 ## D2. 시스템 폰트를 쓴다. `next/font/google` 을 쓰지 않는다
 - 이유: 빌드 때 외부에서 폰트를 받는다. 대회장 네트워크나 VM 에서 실패할 수 있다.
@@ -52,3 +55,11 @@
 ## D9. 일정
 - 1일차 10:00~13:00 기획 회의, 13:30~14:30 설계(MOCK, 첫 배포), 2일차 11:00 기능 동결, 14:30 제출. 자세한 체크포인트는 `docs/PLAN.md`.
 - 대회 전(~10/16 09:00)에는 기능 코드를 만들지 않는다. 스타터, 문서, 절차만 다듬는다.
+
+## D10. 스택 버전과 AI 가 자주 틀리는 점
+버전은 `web/package.json`, `ai/requirements.txt` 가 기준이다. AI 는 학습 시점의 옛 방식으로 코드를 만들기 쉬우니 아래를 따른다.
+- **shadcn/ui 는 Base UI 버전**이다. `web/components/ui/*` 는 `@base-ui/react` 를 쓴다. Radix 버전 예시(`@radix-ui/*` import, `asChild`)를 그대로 쓰지 말고, 기존 `components/ui` 파일의 사용법을 따른다.
+- **Tailwind CSS v4** 다. `tailwind.config.js` 가 없다. 색·테마는 `web/app/globals.css` 에 있다. 설정 파일을 새로 만들지 않는다.
+- **Next.js 16 (App Router)**. lint 는 `npm run lint` (= `eslint`). `next lint` 는 쓰지 않는다. 동적 라우트의 `params` 는 Promise 라서 `await` 한다. 요청 시점에 실행해야 하는 API 는 기존 예시처럼 `await connection()` 을 둔다.
+- **OpenAI SDK** 는 `ai/llm.py` 의 `ask` 안에서만 쓴다. 다른 곳에서 SDK 호출 방식을 새로 만들지 않는다.
+- 빌드 오류가 나면 오류 메시지와 이 절을 함께 보고 고친다. 패키지 버전을 올리거나 내려서 해결하지 않는다 (정민 승인 필요).

@@ -129,6 +129,35 @@ curl -s http://localhost/api/db-check     # {"ok":true,"data":{"result":1}}
 - `ORA-01017`: 비밀번호 틀림
 - 원인 로그: `docker compose -f deploy/docker-compose.yml logs --tail 20 web`
 
+### 5-1. 앱 전용 사용자, 노트북 접속, 테이블 생성 `[미검증]`
+ADMIN 은 DB 전체 권한이다. 앱(VM)과 영진 노트북은 **APP 사용자**로 접속하고, ADMIN 비밀번호는 정민만 갖는다 (DECISIONS D1).
+
+**APP 사용자 만들기** (ADB 상세 → Database actions → SQL, ADMIN 으로 로그인, 한 번만)
+```sql
+CREATE USER APP IDENTIFIED BY "<비밀번호>";   -- 12~30자, 대문자·소문자·숫자 포함, 큰따옴표 금지
+GRANT CREATE SESSION, CREATE TABLE, CREATE SEQUENCE, CREATE VIEW TO APP;
+ALTER USER APP QUOTA UNLIMITED ON DATA;
+-- APP 이 Database Actions(웹 SQL 편집기)에 로그인할 수 있게 한다
+BEGIN
+  ORDS_ADMIN.ENABLE_SCHEMA(p_enabled => TRUE, p_schema => 'APP',
+    p_url_mapping_type => 'BASE_PATH', p_url_mapping_pattern => 'app', p_auto_rest_auth => TRUE);
+END;
+/
+```
+- VM `deploy/.env` 의 `DB_USER`/`DB_PASSWORD` 를 APP 으로 바꾸고 `up -d --force-recreate web` → `/api/db-check`
+
+**영진 노트북에서 접속 (대회 당일)**
+1. 대회장 와이파이의 공인 IP 확인 (영진 노트북 브라우저에서 "what is my ip")
+2. ADB → More actions → Update network access → ACL 에 그 IP 추가 (VM IP 는 그대로 둔다). 반영 1~2분
+3. 영진에게 `DB_USER=APP`, 비밀번호, 접속 문자열을 **직접** 전달 (팀 채팅에 올리지 않음). 영진은 `web/.env.local` 에만 넣는다
+4. 영진이 `npm run dev` → `http://localhost:3000/api/db-check` 확인
+- 와이파이·핫스팟을 바꾸면 IP 가 바뀐다. 접속이 시간 초과로 실패하면 1~2를 다시 한다
+- OCI 계정은 필요 없다. DB 사용자 정보와 ACL 만 있으면 된다
+
+**테이블 생성 (`web/db/schema.sql` 이 머지될 때마다)**
+- Database actions → SQL 에 **APP 으로 로그인** → 새로 추가된 문장만 붙여 넣고 Run Script(F5)
+- 이미 실행한 문장은 다시 돌리지 않는다. 변경은 `ALTER TABLE` 로 추가된다
+
 ## 6. OpenAI 연결 `[미검증]`
 ```
 OPENAI_API_KEY=<주최 측 키>
