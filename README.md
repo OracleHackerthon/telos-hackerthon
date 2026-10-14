@@ -77,6 +77,7 @@ uvicorn main:app --reload --port 8000
 | 작업 시작 | `$start 요약 기능` |
 | 기능 만들기 | `PLAN.md 의 요약 기능 체크리스트 1번 해줘` |
 | 화면 확인 | `로컬에서 띄우고 확인할 주소 알려줘` |
+| 가짜 API 먼저 만들기 (API 담당) | `$mock 요약 기능` |
 | 제출 | `$submit` |
 | 머지 공지 후 | `$sync` |
 
@@ -90,13 +91,7 @@ uvicorn main:app --reload --port 8000
 - `docs/API_CONTRACT.md` 화면↔API↔AI 주고받는 형태
 - `docs/OCI_RUNBOOK.md` 배포·장애 대응
 - `docs/DEMO_SCRIPT.md` 발표·시연
+- `docs/MERGER_CHECKLIST.md` 정민: 머지·CI·배포·제출 점검표
 
-## 5. 정민: 스타터 마무리 (한 번만)
-shadcn/ui 초기화는 이 저장소에 아직 포함되어 있지 않습니다. 정민 노트북에서:
-```powershell
-cd web
-npx shadcn@latest init --defaults
-npx shadcn@latest add button card input textarea label sonner
-npm run build
-```
-결과를 PR로 올려 머지합니다.
+## 5. 정민
+머지, CI, 배포, 제출 때 확인할 것은 `docs/MERGER_CHECKLIST.md` 를 따릅니다.
