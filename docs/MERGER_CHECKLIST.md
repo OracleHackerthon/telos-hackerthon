@@ -118,6 +118,16 @@
   git grep -n --untracked "MOCK" -- web/app web/lib ai
   ```
 
+### 3-1. 샘플 제거 (당일, OpenAI 연결 확인 직후 정민이 한 PR 로)
+`ai-example` 은 OpenAI 키를 확인하는 유일한 수단이다 (DECISIONS D7). VM 에서 `/api/ai-example` 이 성공한 뒤에 지운다.
+- [ ] `web/app/api/ai-example/` 폴더 삭제
+- [ ] `web/app/page.tsx` 를 빈 첫 화면으로 교체 (예원의 실제 화면이 이미 들어왔으면 생략)
+- [ ] `ai/main.py` 의 `/example` 엔드포인트와 `ExampleIn` 삭제 (`/health` 는 남김)
+- [ ] `ai/prompts/example.md` 삭제
+- [ ] `docs/API_CONTRACT.md` 의 "샘플: ai-example" 항목 삭제, 변경 이력 기록
+- [ ] 남기는 것: `/api/health`, `/api/db-check`, ai 의 `/health`, `web/lib/ai-client.ts`
+- [ ] `git grep -n "ai-example\|/example" -- web ai` 결과가 없는지 확인 후 PR
+
 ---
 
 ## 4. 배포 (OCI VM)
@@ -170,7 +180,7 @@ cd ~/<저장소> && ./deploy/deploy.sh
 - [ ] 기능 머지 중단 공지 (13:30 이후 머지는 버그 수정만)
 - [ ] MOCK 0건: `git grep -n --untracked "MOCK" -- web/app web/lib ai` 결과 없음
   - 남아 있으면: 실제 구현이 불가능한 기능은 화면에서 숨기거나, 시연에 쓰지 않는다
-- [ ] 샘플 코드 정리: `ai-example` 화면·API·`/example` 이 남아 있으면 제거하거나 숨김
+- [ ] 샘플 코드 정리: 3-1 을 아직 안 했으면 지금 한다
 - [ ] 비밀값 최종 확인 (둘 다 결과가 없어야 함):
   - `git log --oneline -E -G 'sk-[A-Za-z0-9_-]{20,}|DB_PASSWORD=[^[:space:]]|OPENAI_API_KEY=[^[:space:]]'`
   - `git log --oneline --all -- '**/.env' '.env' '**/.env.local'`
