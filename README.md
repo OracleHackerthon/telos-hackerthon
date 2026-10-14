@@ -91,12 +91,3 @@ uvicorn main:app --reload --port 8000
 - `docs/OCI_RUNBOOK.md` 배포·장애 대응
 - `docs/DEMO_SCRIPT.md` 발표·시연
 
-## 5. 정민: 스타터 마무리 (한 번만)
-shadcn/ui 초기화는 이 저장소에 아직 포함되어 있지 않습니다. 정민 노트북에서:
-```powershell
-cd web
-npx shadcn@latest init --defaults
-npx shadcn@latest add button card input textarea label sonner
-npm run build
-```
-결과를 PR로 올려 머지합니다.
