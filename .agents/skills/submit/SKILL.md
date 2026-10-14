@@ -17,7 +17,7 @@ description: 작업을 검사하고 PR로 제출할 때 사용한다. 사용자�
 - `docs/API_CONTRACT.md` 의 요청·응답 형태와 다른가
 - 연결 규칙 위반: 브라우저가 ai 를 직접 호출, OpenAI 를 `ai/llm.py` 밖에서 호출, DB 를 `web/lib/db.ts` 밖에서 접근
 - `package.json`, `requirements.txt` 변경 (있으면 정민 승인 여부를 사용자에게 묻는다)
-- 남은 `MOCK` 주석: `grep -rn "MOCK" web/app web/lib ai --include=*.ts --include=*.tsx --include=*.py` 결과를 PR 본문 "남은 MOCK" 에 적는다 (없으면 "없음")
+- 남은 `MOCK` 주석: `git grep -n --untracked "MOCK" -- web/app web/lib ai` 결과를 PR 본문 "남은 MOCK" 에 적는다 (없으면 "없음")
 - 명백한 버그: 처리하지 않은 오류, 남은 console.log·print 디버그 출력, 쓰지 않는 코드
 
 문제가 있으면 고칠 수 있는 것은 고치고 사용자에게 알린다. 담당 밖 파일이나 계약 문제는 고치지 말고 멈춘다.
