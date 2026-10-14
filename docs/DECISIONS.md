@@ -63,3 +63,13 @@
 - **Next.js 16 (App Router)**. lint 는 `npm run lint` (= `eslint`). `next lint` 는 쓰지 않는다. 동적 라우트의 `params` 는 Promise 라서 `await` 한다. 요청 시점에 실행해야 하는 API 는 기존 예시처럼 `await connection()` 을 둔다.
 - **OpenAI SDK** 는 `ai/llm.py` 의 `ask` 안에서만 쓴다. 다른 곳에서 SDK 호출 방식을 새로 만들지 않는다.
 - 빌드 오류가 나면 오류 메시지와 이 절을 함께 보고 고친다. 패키지 버전을 올리거나 내려서 해결하지 않는다 (정민 승인 필요).
+
+## D11. 외부 스킬은 저장소에 복사해 고정한다
+각자 PC 에 설치하지 않고, 확인한 버전을 `.agents/skills/` 에 복사해 팀 전체가 같은 것을 쓴다 (템플릿을 따라 대회 저장소에도 들어간다). 외부 스킬은 남의 코드처럼 SKILL.md 와 스크립트를 읽고 넣는다.
+| 스킬 | 출처 (확인한 커밋) | 바꾼 것 |
+|---|---|---|
+| `gh-fix-ci` | openai/skills `skills/.curated/gh-fix-ci` (49f948f) | 끝에 "우리 팀 규칙" 절 추가 (담당 경로만 수정, submit 으로 제출). 스크립트는 `gh`, `git` 만 실행함을 확인 |
+| `shadcn-ui` | shadcn-ui/ui `skills/shadcn/rules/` (30a58d4), MIT | 규칙 문서만 복사. SKILL.md 는 새로 작성: Base UI 기준, `npx shadcn` 실행 금지, 없는 부품은 정민에게 요청 |
+| Next.js 안내 | Next.js 16.4 가 제공하는 `web/AGENTS.md` 블록 | 위에 한국어 안내 두 줄 추가. 블록은 `next dev` 가 관리하므로 고치지 않는다 |
+- shadcn 공식 스킬 전체는 넣지 않았다. 팀원 Codex 가 `npx shadcn add` 로 공통 파일(`components/ui`, `package.json`)을 바꾸고 Geist 폰트를 되돌릴 수 있어서다.
+- Vercel `react-best-practices`(성능 최적화 규칙)와 obra/superpowers 묶음(TDD·worktree 강제)은 해커톤 흐름과 맞지 않아 넣지 않았다.
