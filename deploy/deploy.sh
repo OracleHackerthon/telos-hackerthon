@@ -10,7 +10,10 @@ if [ ! -f deploy/.env ]; then
 fi
 
 git pull --ff-only
-docker compose -f deploy/docker-compose.yml up -d --build
+# 메모리가 작은 VM 에서 동시에 빌드하면 멈추므로 하나씩 빌드한다
+docker compose -f deploy/docker-compose.yml build ai
+docker compose -f deploy/docker-compose.yml build web
+docker compose -f deploy/docker-compose.yml up -d
 docker image prune -f >/dev/null
 
 echo "상태 확인 중..."
