@@ -39,7 +39,7 @@ sudo firewall-cmd --reload
 ## 저장소 받기
 ```bash
 sudo dnf install -y git
-git clone https://github.com/telos-hackerthon/<저장소>.git
+git clone https://github.com/OracleHackerthon/<저장소>.git
 cd <저장소>
 cp .env.example deploy/.env && vi deploy/.env   # 값 채우기
 chmod +x deploy/deploy.sh

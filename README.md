@@ -35,9 +35,9 @@ GitHub와 저장소:
 gh auth login                                   # 브라우저 인증
 git config --global user.name "이름"
 git config --global user.email "깃허브 이메일"
-gh repo clone telos-hackerthon/<저장소>
+gh repo clone OracleHackerthon/<저장소>
 ```
-- `telos-hackerthon` 조직 초대 메일을 먼저 수락하세요.
+- `OracleHackerthon` 조직 초대 메일을 먼저 수락하세요.
 
 AI 코딩 도구:
 - 예원·영진: `npm install -g @openai/codex` → `codex login` (개인 ChatGPT 계정)
