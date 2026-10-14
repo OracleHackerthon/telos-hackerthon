@@ -29,7 +29,7 @@ description: 작업을 검사하고 PR로 제출할 때 사용한다. 사용자�
 ## 4. 커밋과 push
 - 사용자 담당 경로만 `git add <경로>` 한다. `git add .` 는 쓰지 않는다.
 - `git commit -m "feat: <한 줄 요약>"`
-- `git push -u origin <브랜치>`
+- `git push -u origin <브랜치>` (옵션을 더 붙이지 않는다. `--force` 류 금지)
 
 ## 5. PR
 `gh pr create --title "<한 줄 요약>" --body "<본문>"`. 본문 형식:
