@@ -17,8 +17,6 @@ Oracle TELOS Challenge 2026 팀 스타터. 사람용 안내서입니다 (에이�
 ## 1. 설치 체크리스트 (PowerShell, 목요일 저녁까지)
 
 ```powershell
-winget install OpenJS.NodeJS.LTS
-winget install Git.Git
 winget install GitHub.cli
 winget install Python.Python.3.12
 ```
