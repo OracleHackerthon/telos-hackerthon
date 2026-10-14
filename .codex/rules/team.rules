@@ -10,6 +10,23 @@ prefix_rule(
     match = ["git push --force origin feat/x", "git push -f"],
     not_match = ["git push -u origin feat/x"],
 )
+# 옵션이 브랜치보다 앞에 오는 형태도 막는다.
+# 한계: 브랜치 뒤에 옵션이 붙는 형태(git push -u origin feat/a --force)는 규칙으로 못 막는다.
+# 그래서 main 은 GitHub Ruleset 이 막고, submit 스킬에 "옵션 없이 push" 를 명시했다.
+prefix_rule(
+    pattern = ["git", "push", ["-u", "--set-upstream"], "origin", ["--force", "-f", "--force-with-lease", "--delete", "-d"]],
+    decision = "forbidden",
+    justification = "강제 push·원격 브랜치 삭제는 정민에게 요청할 것.",
+    match = ["git push -u origin --force feat/x"],
+    not_match = ["git push -u origin feat/x"],
+)
+prefix_rule(
+    pattern = ["git", "push", "origin", ["--force", "-f", "--force-with-lease", "--delete", "-d"]],
+    decision = "forbidden",
+    justification = "강제 push·원격 브랜치 삭제는 정민에게 요청할 것.",
+    match = ["git push origin --force feat/x", "git push origin -f feat/x"],
+    not_match = ["git push -u origin feat/x"],
+)
 prefix_rule(
     pattern = ["git", "reset", "--hard"],
     decision = "forbidden",
