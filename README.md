@@ -68,22 +68,21 @@ uvicorn main:app --reload --port 8000
 
 연결 확인: http://localhost:3000 에서 문장을 보내 요약이 오면 성공. `http://localhost:3000/api/health` 에서 `"ai":"up"` 확인.
 
-## 3. 작업 흐름
+## 3. 작업 흐름 (Codex에게 말로 시킵니다)
 
-```powershell
-git switch main; git pull
-git switch -c feat/<기능>
-# Codex 에게: "docs/PLAN.md 의 <기능> 체크리스트대로 구현해"
-cd web; npm run build; npm run lint     # web 작업 시 반드시 통과
-git status                              # .env 가 섞이지 않았는지 확인
-git add <내 폴더>
-git commit -m "feat: <설명>"
-git push -u origin feat/<기능>
-gh pr create --fill
-```
-- 머지는 정민이 매시 정각에 합니다. CI가 초록불이어야 머지됩니다.
-- 머지 공지가 오면 `git switch main; git pull` 후 내 브랜치에 반영: `git switch feat/<기능>; git merge main`
-- 다른 사람 폴더나 공통 파일을 바꿔야 하면 직접 고치지 말고 정민에게 요청하세요.
+저장소 폴더에서 `codex` 를 실행합니다. 처음에 이 폴더를 신뢰(trust)할지 물으면 **예**를 고릅니다. 그래야 팀 규칙(`.codex/rules`)이 적용됩니다.
+
+| 할 일 | Codex에게 |
+|---|---|
+| 작업 시작 | `$start 요약 기능` |
+| 기능 만들기 | `PLAN.md 의 요약 기능 체크리스트 1번 해줘` |
+| 화면 확인 | `로컬에서 띄우고 확인할 주소 알려줘` |
+| 제출 | `$submit` |
+| 머지 공지 후 | `$sync` |
+
+- Codex가 승인을 물으면: 내 폴더 안 파일 수정, `git commit`, 빌드 명령은 승인. **삭제, 패키지 설치, 다른 폴더 수정은 거절하고 정민에게** 알립니다.
+- "정민을 불러 주세요" 가 나오면 그대로 정민에게 연락합니다 (충돌, 같은 오류 반복 등).
+- 머지는 정민이 정해진 시각에 합니다. CI가 초록불이고 PR에 자체 리뷰가 있어야 머지됩니다.
 - 키를 실수로 push했다면 지우는 걸로는 안 됩니다. **즉시 알리고 키를 재발급**합니다.
 
 ## 4. 문서
