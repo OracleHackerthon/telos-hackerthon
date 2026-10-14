@@ -17,7 +17,7 @@
 | `web/app/api/`, `web/lib/db.ts` | 영진 |
 | `ai/`, `research/` | 승연 |
 | `web/lib/api.ts`, `web/lib/ai-client.ts`, `web/components/ui/`, `web/package.json`, `ai/requirements.txt`, `docs/`, `AGENTS.md` | 정민 |
-| `deploy/`, `Dockerfile`, `.github/`, `.codex/`, `.agents/`, `.claude/` | 정민 |
+| `deploy/`, `Dockerfile`, `.github/`, `.codex/`, `.agents/`, `.claude/`, `CLAUDE.md` | 정민 |
 
 남의 경로를 바꿔야 하면 작업을 멈추고, 무엇이 필요한지 사용자에게 알린다.
 
@@ -25,6 +25,7 @@
 - 기능 구현: `docs/PLAN.md` 의 해당 기능 체크리스트
 - web↔ai, 화면↔API 연결: `docs/API_CONTRACT.md` (적힌 형태를 그대로 따른다)
 - 배포: `docs/OCI_RUNBOOK.md`
+- 구조·설정·패키지·배포를 바꾸거나 바꾸자고 제안하기 전: `docs/DECISIONS.md` (이미 내린 결정과 이유)
 
 ## 연결 규칙
 - 브라우저는 `web` 의 `/api/*` 만 호출한다. `ai` 를 직접 부르지 않는다.
@@ -60,3 +61,4 @@
 ## 이 파일의 관리
 - 같은 실수가 두 번 나오면 정민이 규칙 한 줄을 추가한다.
 - 규칙이 바뀌면 같은 PR에서 이 파일을 고친다.
+- 결정을 바꾸면 같은 PR에서 `docs/DECISIONS.md` 를 고친다.
