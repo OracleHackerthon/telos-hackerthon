@@ -31,6 +31,7 @@
 - `web` 에서 `ai` 호출은 `web/lib/ai-client.ts` 의 `callAi` 만 쓴다.
 - OpenAI 호출은 `ai/llm.py` 의 `ask` 만 쓴다. 프롬프트는 `ai/prompts/*.md` 에 둔다.
 - DB 접근은 `web/lib/db.ts` 만 한다. `ai` 는 DB에 접근하지 않는다.
+- DB는 Oracle Autonomous Database(23ai)다. PostgreSQL·MySQL 문법이 아니라 Oracle SQL 을 쓴다 (`GENERATED ALWAYS AS IDENTITY`, `VARCHAR2`, `FETCH FIRST n ROWS ONLY`, 바인드는 `:name`).
 - 모든 응답 형식: `{ ok: boolean, data?, error? }`
 - 계약(요청/응답 형태)을 바꿔야 하면 코드를 고치지 말고 사용자에게 알린다.
 

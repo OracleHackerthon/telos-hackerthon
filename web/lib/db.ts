@@ -1,5 +1,5 @@
 // Autonomous DB 연결 (node-oracledb Thin 모드, 지갑 없는 TLS 접속 기준).
-// 접속 정보는 환경변수에서만 읽는다. 연결 방식은 목요일 테스트 후 확정한다.
+// 접속 정보는 환경변수에서만 읽는다. 10/14 리허설에서 이 방식으로 접속 확인 (docs/OCI_RUNBOOK.md 5절).
 import oracledb from "oracledb";
 
 let pool: oracledb.Pool | undefined;
