@@ -17,7 +17,7 @@
 | `web/app/api/`, `web/lib/db.ts`, `web/db/` | 영진 |
 | `ai/`, `research/` | 승연 |
 | `web/lib/api.ts`, `web/lib/ai-client.ts`, `web/components/ui/`, `web/package.json`, `ai/requirements.txt`, `docs/`, `AGENTS.md` | 정민 |
-| `deploy/`, `Dockerfile`, `.github/`, `.codex/`, `.agents/`, `.claude/`, `CLAUDE.md` | 정민 |
+| `deploy/`, `Dockerfile`, `.github/`, `.codex/`, `.agents/`, `.claude/`, `CLAUDE.md`, `web/AGENTS.md`, `web/CLAUDE.md` | 정민 |
 
 남의 경로를 바꿔야 하면 작업을 멈추고, 무엇이 필요한지 사용자에게 알린다.
 
@@ -48,7 +48,7 @@
 - 대화를 시작하면 사용자가 누구인지 확인한다. `git config user.name` 이 예원·영진·승연·정민 중 하나면 그 사람으로 보고, 아니면 "누구세요? (예원, 영진, 승연)" 라고 묻는다.
 - 누구인지 알면 `docs/TEAM.md` 의 공통 절과 그 사람 절을 읽고, 정해진 순서대로 문서를 읽은 뒤 3줄로 보고한다. 저장소 전체를 훑지 않는다.
 - 팀원은 코드와 git을 직접 다루지 않는다. git, 빌드, PR은 네가 실행하고 결과를 쉬운 말로 보고한다.
-- 작업 시작은 `start`, 제출은 `submit`, 최신화는 `sync`, 가짜 API 는 `mock` 스킬을 따른다.
+- 작업 시작은 `start`, 제출은 `submit`, 최신화는 `sync`, 가짜 API 는 `mock`, 화면 부품은 `shadcn-ui`, CI 실패 원인 찾기는 `gh-fix-ci` 스킬을 따른다.
 - 충돌 해결, 강제 push, reset, rebase, 삭제, 머지, 서버 접속은 하지 않는다. 필요하면 멈추고 "정민을 불러 주세요" 라고 말한다.
 - 같은 오류를 두 번 고쳐도 해결되지 않으면 멈추고 정민을 부르라고 말한다.
 
