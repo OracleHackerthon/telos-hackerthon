@@ -1,0 +1,30 @@
+# 비밀값
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+wallet*/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# 데이터
+research/data/raw/
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+next-env.d.ts
