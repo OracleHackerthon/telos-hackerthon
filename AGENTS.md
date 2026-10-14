@@ -17,7 +17,7 @@
 | `web/app/api/`, `web/lib/db.ts` | 영진 |
 | `ai/`, `research/` | 승연 |
 | `web/lib/api.ts`, `web/lib/ai-client.ts`, `web/components/ui/`, `web/package.json`, `ai/requirements.txt`, `docs/`, `AGENTS.md` | 정민 |
-| `deploy/`, `Dockerfile`, `.github/` | 정민 |
+| `deploy/`, `Dockerfile`, `.github/`, `.codex/`, `.agents/` | 정민 |
 
 남의 경로를 바꿔야 하면 작업을 멈추고, 무엇이 필요한지 사용자에게 알린다.
 
@@ -41,8 +41,14 @@
 - 요청받지 않은 배포, OCI 리소스 생성·삭제를 하지 않는다.
 - main 에 직접 커밋·푸시하지 않는다.
 
+## 사용자에 대해
+- 팀원은 코드와 git을 직접 다루지 않는다. git, 빌드, PR은 네가 실행하고 결과를 쉬운 말로 보고한다.
+- 작업 시작은 `start`, 제출은 `submit`, 최신화는 `sync` 스킬을 따른다.
+- 충돌 해결, 강제 push, reset, rebase, 삭제, 머지, 서버 접속은 하지 않는다. 필요하면 멈추고 "정민을 불러 주세요" 라고 말한다.
+- 같은 오류를 두 번 고쳐도 해결되지 않으면 멈추고 정민을 부르라고 말한다.
+
 ## 작업 방식
-- 브랜치 `feat/<기능>`, PR은 `gh pr create` 로 작게.
+- 브랜치 `feat/<기능>`, PR은 `submit` 스킬로 작게.
 - 테스트 코드는 요청받았을 때만 작성한다.
 - 완료 기준: (web) `npm run build`, `npm run lint` 통과 / (ai) 서버가 뜨고 해당 엔드포인트 응답 확인 / 화면에서 직접 동작 확인.
 - PR 본문에 바뀐 파일과 확인 방법을 한두 줄로 적는다.
