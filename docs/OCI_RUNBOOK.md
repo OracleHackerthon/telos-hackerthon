@@ -60,7 +60,9 @@ git log --oneline -5                       # 정상이던 커밋 확인
 git checkout <커밋> && docker compose -f deploy/docker-compose.yml up -d --build
 # 복구 후 다시 main 으로: git checkout main
 ```
-정상 배포마다 태그를 단다: `git tag ok-<시각> && git push --tags`
+정상 배포마다 **정민 PC에서** 태그를 단다 (VM의 저장소는 push 권한이 없다):
+`git fetch origin && git tag ok-<MMDD-HHMM> origin/main && git push origin ok-<MMDD-HHMM>`
+롤백 시 VM에서 `git fetch --tags` 후 `git checkout ok-<시각>` 을 쓴다.
 
 ## 장애 체크리스트
 1. `docker compose -f deploy/docker-compose.yml ps` — 컨테이너가 다 떠 있는가

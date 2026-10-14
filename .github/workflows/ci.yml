@@ -2,6 +2,8 @@ name: CI
 
 on:
   pull_request:
+    # edited: PR 본문만 고쳐도 review-note 를 다시 검사한다
+    types: [opened, synchronize, reopened, edited]
   push:
     branches: [main]
 

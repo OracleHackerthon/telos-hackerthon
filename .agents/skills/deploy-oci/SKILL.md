@@ -10,4 +10,4 @@ description: OCI VM에 현재 main 을 배포하고 상태를 확인할 때 사�
 3. VM에서 `cd ~/<저장소> && ./deploy/deploy.sh` 를 실행한다.
 4. 출력 마지막에 "배포 완료"가 있으면 커밋 해시를 사용자에게 알린다.
 5. 실패하면 RUNBOOK 의 "장애 체크리스트"를 순서대로 실행하고 결과를 보고한다. 스스로 설정을 바꾸지 않는다.
-6. 성공하면 `git tag ok-<MMDD-HHMM> && git push --tags` 를 제안한다 (사용자 승인 후 실행).
+6. 성공하면 VM이 아니라 로컬 저장소에서 `git fetch origin && git tag ok-<MMDD-HHMM> origin/main && git push origin ok-<MMDD-HHMM>` 을 제안한다 (사용자 승인 후 실행). VM의 저장소는 push 권한이 없다.
