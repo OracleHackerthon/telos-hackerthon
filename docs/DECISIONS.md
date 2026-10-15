@@ -74,6 +74,8 @@
 | Next.js 안내 | Next.js 16.4 가 제공하는 `web/AGENTS.md` 블록 | 위에 한국어 안내 두 줄 추가. 블록은 `next dev` 가 관리하므로 고치지 않는다 |
 - shadcn 공식 스킬 전체는 넣지 않았다. 팀원 Codex 가 `npx shadcn add` 로 공통 파일(`components/ui`, `package.json`)을 바꾸고 Geist 폰트를 되돌릴 수 있어서다.
 - Vercel `react-best-practices`(성능 최적화 규칙)와 obra/superpowers 묶음(TDD·worktree 강제)은 해커톤 흐름과 맞지 않아 넣지 않았다.
+- 디자인 스킬은 스킬 폴더가 아닌 **보관함 `docs/design-library/`** 에 둔다 (10/15). Codex 가 설명만 보고 스스로 불러오지 않게 하고, `ui-design` 7절 연결표가 정한 때에만 읽는다. 채택: jakubkrehel/skills (4c66b1f) 의 `break`, `state-machine`, `better-*` 7개, `interface-review` / MengTo/Skills (83a47fe) 의 `no-ai-design-slop`, `audit-ai-design-slop`. 모두 MIT, 실행 스크립트 없음, `agents/openai.yaml` 만 지움.
+- 넣지 않은 것: emilkowalski/skills (대부분 애니메이션, `break-ui` 는 API 쪽 데이터를 바꿔 D4·담당 경로와 충돌), elayadesign 두 스킬 (폰트 교체·외부 이미지·유리 효과 내비를 강제해 D2 와 충돌), ConardLi/garden-skills (중국어, 단독 HTML·영상용), MengTo 나머지 (게임·일러스트 등 무관).
 
 ## D12. 삭제는 금지하지 않고 매번 묻는다. 강제는 rules, 최종 판단은 사람
 - 10/15 리허설: Windows Codex(0.162.1)에 "이 폴더 삭제해줘" → `Remove-Item -Recurse -Force` 를 승인("항상 허용")해 저장소 폴더 내용이 전부 지워졌다. AGENTS.md 의 "삭제 금지" 지침은 사용자 요청에 밀렸고, rules 는 bash 의 `rm -r` 만 막고 있었다.
