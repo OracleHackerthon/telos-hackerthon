@@ -57,11 +57,29 @@ prefix_rule(
     justification = "히스토리를 바꾼다. 최신화는 sync 스킬(git merge)로 한다.",
     match = ["git rebase main"],
 )
+# ---- 삭제: 금지하지 않고 "매번 묻기" ----
+# Codex 가 테스트 폴더 등을 스스로 지울 수 있어야 해서 forbidden 이 아니라 prompt 로 둔다.
+# prompt 는 개인 설정에 저장된 "항상 허용"(allow)보다 엄격하므로, 항상 허용을 눌렀어도 매번 다시 묻는다.
+# 승인 화면에서 경로를 읽고, 내 담당 폴더 안의 하위 폴더일 때만 "예(한 번)". 저장소 폴더 자체나 저장소 밖이면 거절.
+# (10/15 리허설: Windows 에서 Remove-Item -Recurse 로 저장소 전체가 지워진 사고 이후 추가)
 prefix_rule(
-    pattern = ["rm", ["-rf", "-fr", "-r"]],
-    decision = "forbidden",
-    justification = "폴더 삭제는 정민에게 요청할 것.",
-    match = ["rm -rf web/app"],
+    pattern = [["Remove-Item", "remove-item", "ri", "rm", "del", "erase", "rd", "rmdir", "Remove-ItemProperty"]],
+    decision = "prompt",
+    justification = "파일·폴더 삭제. 경로가 내 담당 폴더 안인지 확인하고 한 번만 승인할 것. 저장소 폴더 자체나 저장소 밖이면 거절.",
+    match = [
+        "Remove-Item -LiteralPath C:/x/telos-hackerthon -Recurse -Force",
+        "remove-item web/app/test -Recurse",
+        "rm -rf web/app/test",
+        "rmdir /s /q web",
+        "del web/app/test.tsx",
+    ],
+    not_match = ["git rm --cached x", "npm run build"],
+)
+prefix_rule(
+    pattern = ["cmd", ["/c", "/C"], ["rd", "rmdir", "del", "erase"]],
+    decision = "prompt",
+    justification = "파일·폴더 삭제. 경로를 확인하고 한 번만 승인할 것.",
+    match = ["cmd /c rmdir /s /q web"],
 )
 prefix_rule(
     pattern = ["gh", "pr", "merge"],
