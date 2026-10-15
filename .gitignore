@@ -28,3 +28,6 @@ Thumbs.db
 .vscode/
 .idea/
 next-env.d.ts
+
+# 디자인 점검용 임시 페이지 (docs/design-library 의 break, state-machine). PR 에 넣지 않는다
+web/app/dev-preview/
