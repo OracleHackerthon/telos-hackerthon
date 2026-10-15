@@ -74,3 +74,11 @@
 | Next.js 안내 | Next.js 16.4 가 제공하는 `web/AGENTS.md` 블록 | 위에 한국어 안내 두 줄 추가. 블록은 `next dev` 가 관리하므로 고치지 않는다 |
 - shadcn 공식 스킬 전체는 넣지 않았다. 팀원 Codex 가 `npx shadcn add` 로 공통 파일(`components/ui`, `package.json`)을 바꾸고 Geist 폰트를 되돌릴 수 있어서다.
 - Vercel `react-best-practices`(성능 최적화 규칙)와 obra/superpowers 묶음(TDD·worktree 강제)은 해커톤 흐름과 맞지 않아 넣지 않았다.
+
+## D12. 삭제는 금지하지 않고 매번 묻는다. 강제는 rules, 최종 판단은 사람
+- 10/15 리허설: Windows Codex(0.162.1)에 "이 폴더 삭제해줘" → `Remove-Item -Recurse -Force` 를 승인("항상 허용")해 저장소 폴더 내용이 전부 지워졌다. AGENTS.md 의 "삭제 금지" 지침은 사용자 요청에 밀렸고, rules 는 bash 의 `rm -r` 만 막고 있었다.
+- 배운 것: **AGENTS.md 는 강제 장치가 아니다.** 강제는 `.codex/rules`, 마지막은 사람의 승인이다.
+- Codex 가 테스트 폴더를 스스로 지울 수 있어야 해서 삭제를 forbidden 이 아닌 **prompt** 로 둔다 (`Remove-Item`, `rm`, `del`, `rd`, `rmdir`, `erase`, `ri`, `cmd /c rd|rmdir|del`).
+- prompt 는 개인 설정의 "항상 허용"(allow)보다 엄격하므로 매번 다시 묻는다 (codex 0.162.1 `execpolicy check` 로 확인: 개인 allow + 팀 prompt → prompt).
+- 규칙은 명령의 앞부분만 비교하므로 "재귀 삭제만 금지" 같은 규칙은 만들 수 없다 (`-Recurse` 가 경로 뒤에 온다).
+- 남는 위험: 사람이 경로를 읽지 않고 승인하는 것. 그래서 50분 제출 규칙으로 잃을 수 있는 양을 1시간 이내로 줄인다.
