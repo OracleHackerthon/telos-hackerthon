@@ -7,12 +7,14 @@ Oracle TELOS Challenge 2026 팀 스타터. 사람용 안내서입니다 (에이�
                       └→ Autonomous DB
 ```
 
-| 사람 | 역할 | 주로 만지는 곳 |
-|---|---|---|
-| 예원 | 프론트·발표 | `web/app/**/page.tsx`, `web/components/`, `docs/DEMO_SCRIPT.md` |
-| 영진 | API·DB (예비 머지) | `web/app/api/`, `web/lib/db.ts` |
-| 승연 | AI·EDA | `ai/`, `research/` |
-| 정민 | 인프라·배포·통합(머지) | `deploy/`, `.github/`, 공통 파일, `docs/` |
+| 사람 | 역할 | 주로 만지는 곳 | 쓰는 스킬 |
+|---|---|---|---|
+| 예원 | 화면·완성도·발표 | `web/app/**/page.tsx`, `layout.tsx`, `globals.css`, `web/components/<기능>/`, `docs/DEMO_SCRIPT.md` | `$start` `$submit` `$sync` `$gh-fix-ci`, 화면 작업 때 자동: `ui-design` `shadcn-ui` |
+| 영진 | API·DB (예비 머지) | `web/app/api/`, `web/lib/db.ts`, `web/db/` | `$start` `$mock` `$submit` `$sync` `$review-pr` `$gh-fix-ci` |
+| 승연 | AI·데이터 분석 | `ai/`, `research/` | `$start` `$mock` `$submit` `$sync` `$gh-fix-ci` |
+| 정민 | 인프라·배포·통합(머지) | `deploy/`, `.github/`, 공통 파일, `docs/` | Claude Code: `/plan` `/review-pr` |
+
+스킬은 Codex 에서 `$이름`, Claude Code 에서 `/이름` 으로 부릅니다. "자동" 은 부르지 않아도 화면 작업이면 Codex 가 알아서 따릅니다 (안 따르면 "ui-design 스킬대로 해줘").
 
 ## 1. 설치 체크리스트 (PowerShell, 목요일 저녁까지)
 
@@ -82,6 +84,9 @@ uvicorn main:app --reload --port 8000
 | 제출 | `$submit` |
 | CI 빨간불 원인 찾기 | `$gh-fix-ci 내 PR CI 실패 원인 찾아줘` |
 | 머지 공지 후 | `$sync` |
+| 디자인 맞추기 (화면 담당) | `PLAN 의 디자인 방향대로 강조색이랑 헤더 맞춰줘` |
+| 발표 전 화면 점검 (화면 담당) | `ui-design 의 발표용 마감 체크대로 이 화면 점검해줘` |
+| PR 검사 (영진, 예비 머지 때) | `$review-pr <번호>` |
 
 - Codex가 승인을 물으면: 내 폴더 안 파일 수정, `git commit`, 빌드 명령은 승인. **패키지 설치, 다른 폴더 수정은 거절하고 정민에게** 알립니다.
 - **삭제 승인은 경로를 끝까지 읽고**, 내 폴더 안의 하위 항목일 때만 "예(한 번)". 저장소 폴더 전체(`...\telos-hackerthon`)나 저장소 밖이면 거절. **"항상 허용"은 절대 누르지 않습니다.**
@@ -90,8 +95,10 @@ uvicorn main:app --reload --port 8000
 - 키를 실수로 push했다면 지우는 걸로는 안 됩니다. **즉시 알리고 키를 재발급**합니다.
 
 ## 4. 문서
-- `docs/PLAN.md` 무엇을, 누가, 언제까지
+- `docs/PLAN.md` A. 제품(문제, 사용자 흐름, 데모 시나리오, 디자인 방향) / B. 구현(기능별 체크리스트), 일정
 - `docs/API_CONTRACT.md` 화면↔API↔AI 주고받는 형태
+- `docs/TEAM.md` 팀원별 할 일 (Codex 가 "나 예원이야" 를 들으면 읽는 파일)
+- `docs/DECISIONS.md` 이미 정한 것과 이유 (AI 가 되돌리자고 하면 여기와 비교)
 - `docs/OCI_RUNBOOK.md` 배포·장애 대응
 - `docs/DEMO_SCRIPT.md` 발표·시연
 - `docs/MERGER_CHECKLIST.md` 정민: 머지·CI·배포·제출 점검표
