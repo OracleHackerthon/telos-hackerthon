@@ -12,7 +12,7 @@
 - `docs/DECISIONS.md`: 이미 내린 결정과 이유. 구조·설정·패키지·배포 제안 전에 반드시 확인
 - `docs/MERGER_CHECKLIST.md`: 머지·CI·배포·제출 점검표
 - `docs/OCI_RUNBOOK.md`: VM·DB 절차와 검증 상태
-- `docs/PLAN.md`: 일정과 체크포인트
+- `docs/PLAN.md`: A(제품)·B(구현), 일정과 체크포인트. 기획 회의 정리는 `/plan` 스킬
 
 ## 정민을 도울 때
 - PR 리뷰는 `/review-pr <번호>` 로 판정과 보고서만 낸다. 머지는 정민이 한다.
