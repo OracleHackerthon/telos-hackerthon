@@ -6,6 +6,7 @@ description: 화면(web/app 의 page.tsx, web/components)을 만들거나 고칠
 # shadcn-ui: 화면 부품 사용 규칙
 
 출처: shadcn-ui/ui 저장소의 공식 shadcn 스킬 중 `rules/` 문서 (MIT, `LICENSE.md`). 이 저장소에 맞게 아래 "우리 프로젝트 기준" 을 덧붙였다.
+화면 배치·색·상태 화면 같은 구성 규칙은 `ui-design` 스킬을 함께 따른다.
 
 ## 우리 프로젝트 기준 (먼저 읽는다)
 - **Base UI 버전이다** (`web/components.json` 의 `"style": "base-nova"`, 부품은 `@base-ui/react` 사용). Radix 방식(`asChild`, `@radix-ui/*`)을 쓰지 않는다. 커스텀 트리거는 `render` prop 을 쓴다 → `rules/base-vs-radix.md`
