@@ -83,4 +83,4 @@ CI: review-note 통과 | web 통과 | ai 통과 | docker 통과   (실패·진�
 ```
 
 ## 6. 정리
-`git switch main` 으로 돌아온다. 머지는 사람이 GitHub 에서 Squash and merge 로 한다.
+`git switch main` 으로 돌아온다. 머지는 사람이 GitHub 웹에서 Squash and merge 로 한다 (Codex 는 `gh pr merge` 가 금지돼 있다). 사용자가 영진이고 판정이 "머지 가능" 이면 `docs/TEAM.md` 영진 절의 웹 머지 순서를 안내한다.
