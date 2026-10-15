@@ -28,3 +28,6 @@ Thumbs.db
 .vscode/
 .idea/
 next-env.d.ts
+
+# 로컬 도구 상태
+.bkit/
